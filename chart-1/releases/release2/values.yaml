@@ -1,0 +1,8 @@
+deployment:
+  image: "poojan23/docker-bakery-system_repo12-component2"
+  app_name: "repo12-component2-app"
+  tag: "1.0"
+  port: 100
+  container_name: "repo12-component2-container"
+
+

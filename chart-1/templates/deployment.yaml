@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.app_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.app_name }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment.container_name }}
+        image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: APP_ENV
+          value: {{ .Values.deployment.env }}
+        # resources:
+          # limits:
+            # memory: "128Mi"
+            # cpu: "500m"
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do echo hello; sleep 10; done"]
+        ports:
+        - containerPort: {{ .Values.deployment.port }}
+
+

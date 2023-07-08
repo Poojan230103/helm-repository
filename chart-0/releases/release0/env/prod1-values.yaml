@@ -1,0 +1,3 @@
+deployment:
+  "env": "prod1" 
+name: "chart-0-release-0-prod1"
